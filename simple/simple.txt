@@ -1,0 +1,107 @@
+********************************************************************************************
+--------------------------LINUX INTERVIEW QUESTIONS AND ANSWERS-----------------------------
+____________________________________________________________________________________________
+1. Name and UID of Admin user?
+A: Name: root
+   UID: 0
+____________________________________________________________________________________________
+2. List all files including hidden files?
+A: ls -la
+____________________________________________________________________________________________
+3. Command to remove directory and its content?
+A: rm -rf <directory name> ---> -r=recursive -f=forcefully
+   rmdir <directory name> ---> To remove empty directory
+____________________________________________________________________________________________
+4. Which command will show you free/used memory?
+A: free
+   -m=megabytes
+   -h=human-readable(mb)
+   -g=gigabyte
+i) Does free memory exist on Linux?
+A: Yes
+Kernel can free more memory by deleting pages from the buffer, incase RAM utilization is above 90%.
+____________________________________________________________________________________________
+5. How to search for the string "my konfu is the best" in files of a directory recursively?
+A: grep -rn "my konfu is the best" <directory>
+   -n=line number
+   -r=recursive
+____________________________________________________________________________________________
+6. How to connect to a remote server or what is SSH?
+A: Secure way of connecting to remote server is using SSH method(SecureSHell).
+   SSH protocol is a method for secure remote login from one machine to another.
+   SSH encrypts the network communication between client and server.
+   SSH Public and Private Keys
+   Public Key: Can distibute to anyone.
+   Private Key: Should be kept secret.
+
+i) How can I connect to a remote machine without having to type a password or passphrase?
+A: a. ssh-agent
+      #ssh-add
+      #ssh-add -l
+   b. Public Key Authentication
+   c. Hostbased Authentication
+   d. Kerberos Authentication
+
+   Alternative - Non secure
+   telnet and rlogin
+____________________________________________________________________________________________
+7. How to get all environment variables and how can you use them?
+A: We can use below commands to see all the environment variables:
+   #env
+   #printenv
+   #print HOME  ---> Prints user Home Directory
+   #print USER  ---> Prints currently loggeg in user.
+   Detail:
+   #set | less
+   
+   To set Environment Variable(Temporary Method):
+   #export VAR="VALUE" ---> This will be available only in current session.
+			    If you logout and login it wont exits.
+   
+   To set Environment Variable(Persistent Method):
+   Store the environment variables any of the below files:
+   System wide Variables
+   #cat /etc/environment
+   #cat /etc/profile
+   User Specific Environment variables
+   #cat ~/.profile
+   #cat ~/.bashrc
+____________________________________________________________________________________________
+8. I get "command not found" when I run ifconfig -a. What can be wrong?
+A: Revelant package is not installed.
+   We need to find the package that contains this command.
+   Either Google or get information from other server where command exists using following:
+   #rpm -qf /usr/sbin/ifconfig
+   net-tools-2.0-0.25.20131004git.el7.x86_64
+   Finally, install the package.
+____________________________________________________________________________________________
+5. What happens if I type TAB-TAB?
+A: TAB-TAB will auto complete the command.
+____________________________________________________________________________________________
+6. What command will show the available disk space on the Unix/Linux system?
+A: #df ---> Will show the partirion wise details.
+   #du ---> Will show the disk usage details for files and directories inside partitions.
+____________________________________________________________________________________________
+7. What commands do you know that can be used to check DNS records?
+A: #nslookup <IP or hostname>
+   nslookup command will obtain domain name or IP address.
+____________________________________________________________________________________________
+8. What Unix/Linux commands will alter a files ownership, files permissions?
+A: To alter a files ownership, use chown command.
+   #chown user:group file/dir
+
+   To alter a files permissions, use chmod command.
+   #chmod <permission> file/dir
+____________________________________________________________________________________________
+9. What does chmod +x FILENAME do?
+A: It will add execute(1) permission to user, group and others.
+____________________________________________________________________________________________
+10. What does the permission 0750 on a file mean?
+A: 7 - rwx permission to user
+   5 - r-x permission to group users
+   0 - --- No permission to others
+____________________________________________________________________________________________
+
+____________________________________________________________________________________________
+____________________________________________________________________________________________
+********************************************************************************************
