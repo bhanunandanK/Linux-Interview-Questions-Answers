@@ -19,7 +19,8 @@ A: free
    -g=gigabyte
 i) Does free memory exist on Linux?
 A: Yes
-Kernel can free more memory by deleting pages from the buffer, incase RAM utilization is above 90%.
+Kernel can free more memory by deleting pages from the buffer,
+incase RAM utilization is above 90%.
 ____________________________________________________________________________________________
 5. How to search for the string "my konfu is the best" in files of a directory recursively?
 A: grep -rn "my konfu is the best" <directory>
@@ -101,7 +102,114 @@ A: 7 - rwx permission to user
    5 - r-x permission to group users
    0 - --- No permission to others
 ____________________________________________________________________________________________
+11. What does the permission 0750 on a directory mean?
+A: 7 - rwx permission to user
+   5 - r-x permission to group users
+   0 - --- No permission to others
+____________________________________________________________________________________________
+12. How to add a new system user without login permissions?
+A: #useradd -r <username> -s /bin/nologin
+   -r=create system user
+   -s=set a shell 
+____________________________________________________________________________________________
+13. How to add/remove a group from a user?
+A: Add user to group
+   #usermod -aG <group-name> <user-name>
+   #gpasswd -a <user-name> <group-name>
+   
+   Remove user from group
+   #gpasswd -d <user-name> <group-name>
+____________________________________________________________________________________________
+14. What is a bash alias?
+A: Alias is a keybord shortcut or short command for lengthy command.
+   Ex.
+   alias ll='ls -l'
+   If you just type ll it will execute ls -l.
+____________________________________________________________________________________________
+15. How do you set the mail address of the root/a user?
+A: Default email id used by root user is: root@hostname.
+   To change this there are 2 ways:
+   a) Edit /etc/aliases file
+      Add email id at the buttom of the file
+      root: system@domain.com
+      To add multiple email ids, seperate the first email id with comma.
+      #newaliases   ----> It will compile /etc/aliases file.
+      #systemctl restart postfix
+   b) Create a .forward file inside the root folder and add email id there.
+      #vim /root/.forward
+       system@domain.com
+      #systemctl restart postfix
+____________________________________________________________________________________________
+16. What does CTRL-c do?
+A: CTRL-c will send SIGINT signal.
+____________________________________________________________________________________________
+17. What does CTRL-d do?
+A: CTRL-d will send end of file signal.
+____________________________________________________________________________________________
+18. What does CTRL-z do?
+A: CTRL-z will send SIGSTP signal.
 
+NOTE:
+stty - change and print terminal line settings
+#stty -a
+____________________________________________________________________________________________
+19. What is in /etc/services?
+A: It stores the information about services that client applications might use on host.
+   It consist of Service Name, Port Number and Protocol it uses, and aliases.
+   SYNTAX:
+   name port/protocol aliases comments
+____________________________________________________________________________________________
+20. How to redirect STDOUT and STDERR in bash? (> /dev/null 2>&1)
+A: For redirection we use > or >> operator.
+   FDs that represent each numbers are:
+   0 - Standard Input
+   1 - Standard Output
+   2 - Standrd Error
+   STDOUT
+   #find / -name "data.txt" ---> If I issues this command as normal user then it will display
+    				 output, error on the screen.
+    If you want only display only the output and not the error the we redirect the error
+    messages to nullify.
+   #find / -name "data.txt" 2>/dev/null ---> Will dislay only output content
+
+   STDERR
+   #find / -name "data.txt" 1>/dev/null ---> This will nullify the output content and error 
+					     messages will be displayed on the screen.
+   NOTE:
+   If you dont want to display any output on the terminal i.e. (STDOUT and STRERR) nullify
+   the result.(Redirect to /dev/null)
+   Ex.
+   #echo "Hello World" &>/dev/null ---> & = Both STDOUT and STRERR
+____________________________________________________________________________________________
+21. What is the difference between UNIX and Linux.
+A: UNIX is the copyrighted name and OpenGroup hold the trademark. Most UNIX are commercial
+   in nature. You need to pay for support, software, training etc.
+   LINUX Kernel is free to download and install on your systems free of cost.
+   LINUX is the UNIX clone.
+
+   LINUX is just a kernel. All linux distributions includes GUI system + GNU Utilities etc.
+   Whereas UNIX is a complete OS from a single source or Vendor.
+
+   Example:
+   UNIX: HP-UX, IBM AIX, Sun Solaris, Apple MAC OS, IRIX
+   LINUX: RHEL, Fedora, Debian, SUSE, Ubuntu, Arch, Gentoo
+____________________________________________________________________________________________
+22. What is the difference between Telnet and SSH?
+A: Both are the Network communication Protocol used to comminicate with remote servers.
+   SSH encrypts the communication between client and server.
+   Telnet is not a secure protocol and communicates using plain text file, which can be
+   sniffed by anyone.
+   SSH = 22/tcp PORT NO.
+   TELNET = 23tcp PORT NO.
+____________________________________________________________________________________________
+23. Explain the three load averages and what do they indicate.
+A:     
+   a) What command can be used to view the load averages?
+   A: 
+___________________________________________________________________________________________
+____________________________________________________________________________________________
+____________________________________________________________________________________________
+____________________________________________________________________________________________
 ____________________________________________________________________________________________
 ____________________________________________________________________________________________
 ********************************************************************************************
