@@ -203,13 +203,46 @@ A: Both are the Network communication Protocol used to comminicate with remote s
    TELNET = 23tcp PORT NO.
 ____________________________________________________________________________________________
 23. Explain the three load averages and what do they indicate.
-A:     
+A: The three load average indicates the average load for 1,5,15 minutes on the system.    
    a) What command can be used to view the load averages?
-   A: 
+   A: #uptime
+      #top
+      #cat /proc/loadavg
+      High Load indicates many processes are waiting for CPU.
+      1.00 on a single core processor, 2.00 on dual-core, 4.00 on quad-core.
 ___________________________________________________________________________________________
+24. Can you name a lower-case letter that is not a valid option for GNU ls?
+A: #ls -y
+   #ls -z 
+   #ls -j
+   #ls -w
 ____________________________________________________________________________________________
+25. What is a Linux kernel module?
+A: Kernel module are pieces of code that can be loaded and unloaded into the kernel.
 ____________________________________________________________________________________________
+26. Walk me through the steps in booting into single user mode to troubleshoot a problem.
+A: When a grub menu appears while rebooting the server, select the kernel and press e to edit.
+   Go to kernel line.
+   Move the cursor to the last letter.
+   
 ____________________________________________________________________________________________
+27. Walk me through the steps you'd take to troubleshoot a 404 error on a web application.
+A: A 404 Http status code indicates page could not be found on the server. Server itself
+   is reacheable but the page is not.
+   An 404 is a client-side error, implying user mistake or incorrect URL.
+   Possible FIX:
+   1. Retry or Reload the web page F5.
+   2. Check the errors in the URL.
+   3. Move up one directory level. ex. www.example.com/a/b/c --->www.example.com/a/b/
+   4. Clear browser cache.
+   5. Change DNS server used by your system.
+   6. Check with Application owner team.
 ____________________________________________________________________________________________
+28. What is ICMP protocol? Why do you need to use?
+A: ICMP stands for Internet Control Message Protocol. It is used to diagnose network
+   communication issues.
+   It is Internet Layer protocol.
+   It is also used for error reporting.
+   Commands used: ping, traceroute, mtr.
 ____________________________________________________________________________________________
 ********************************************************************************************
