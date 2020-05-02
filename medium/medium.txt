@@ -67,22 +67,134 @@ ________________________________________________________________________________
 A: Packet filters act by inspecting the PACKETS which are transferred between computers
    on the Internet. 
 ____________________________________________________________________________________________
+5. What is Virtual Memory?
+A: RAM + SWAP = Virtual Memory
+   When a RAM utilization exceeds defined limit and still the memory is needed for resources,
+   then inacive pages from are moved to the hard disk space which is known as SWAP space to
+   free up some space on main memory.
 ____________________________________________________________________________________________
+6. What is swap and what is it used for?
+A: A swap is space on the storage disk used by kernel memory management.
+   It is use to store inactive pages from main memory when main memory exceeds the defined
+   limit and no memory is left for new resources.
 ____________________________________________________________________________________________
+7. What is an A record, an NS record, a PTR record, a CNAME record, an MX record?
+A: A record maps hostname to IP address.
+   NS record: Name Server Record.
+   PTR Record: Pointer Record. For implementing reverse DNS lookups.
+   CNAME: Canonical Name. It is the alias name and all the traffic hitting CNAME will
+          redirect to target IP/Host.
+   MX Record: Mail Exchange Record. Maps domain name to a list of message transfer agents
+              for that domain.
 ____________________________________________________________________________________________
+8. Are there any other RRs and what are they used for?
+A: SOA: Start of Authority Record. First record of DNS server.
 ____________________________________________________________________________________________
+9. What is a Split-Horizon DNS?
+A: Split-Horizon DNS/Split-View DNS/Split-brain DNS or Split DNS is the facility of a DNS
+   implementation to provode different sets of DNS information.(Usually source address of
+   DNS request)
 ____________________________________________________________________________________________
+10. What is the sticky bit?
+A:  Sticky Bit is mainly used on folders in order to avoid deletion of folder and its content
+    by other users even though they have write permission.
+    If a sticky bit is set on the folder then only the owner and root can delete the folder.
 ____________________________________________________________________________________________
+11. What does the immutable bit do to a file?
+A:  Setting the immutable bit to file will not allow:
+    Modifying
+    Deleting
+    Renaming
+    No soft or hard links creation
+    (Even by root user)
+
+    NOTE:
+    How to set immutable bit or change attribute of the file.
+    #chattr +i <filename> ---> File is immutable
+    #chattr -R +i <Directoryname>
+    #chattr -i <filename> ---> Remove
+    #chattr +a <filename> ---> It will always append data to the file
+    #chattr -a <filename> ---> Remove
+    Works with ext2/3/4 FS.
+    To check if immutable bit is set on a file.
+    #lsattr
 ____________________________________________________________________________________________
+12. What is the difference between hardlinks and symlinks?
+    What happens when you remove the source to a symlink/hardlink?
+A:  Hardlinks are like a backup copy of original file. Even if we delete original file we
+    can still use hard link file. Both file will have same inode number.
+    Hard link points to the inode and not to the file.
+    We cannot create hard link for directory.
+    Hard Link are File System dependent.
+
+    Soft links are like a shortcut of original file. If we delete original file then link
+    between them is broken. Shortcut file is of no use and known as dangling file.
+    Both file will have different inode number.
+    We can create softlink for directory.
+    Soft Link are independent of File System.
 ____________________________________________________________________________________________
+13. What is an inode and what fields are stored in an inode?
+A: Inode stores data about the data known as Metadata.
+   Inode is the data structure that describes file or directory.
+   Inode describes metadata i.e. permission, acces time owner, name etc.
 ____________________________________________________________________________________________
+14. How to force/trigger a file system check on next reboot?
+A: 2 Ways:
+   a) Create a file forcefsck inside Root FS(/)
+      #touch /forcefsck
+   b) Set drive to check on every reboot and return to default value after reboot.
+      #tune2fs -c 1 /dev/sda1
 ____________________________________________________________________________________________
+15. What is SNMP and what is it used for?
+A:  Simple Network Management Protocol is a protocol for Network Management.
+    It is used for collecting information from networking devices such as servers, hubs etc.
 ____________________________________________________________________________________________
+16. What is a runlevel and how to get the current runlevel?
+A: Runlevel is the mode of operation in Unix like OS.
+   Commands to check runlevel:
+   #who -r
+   #runlevel
+
+  RUNLEVELS:
+  0 - Halt
+  1 - Single User Mode
+  2 - Multi user mode (Without Networking)
+  3 - Full Multi user mode
+  4 - Unused
+  5 - GUI
+  6 - Reboot
 ____________________________________________________________________________________________
+17. What is SSH port forwarding?
+A:  Also known as TCP/IP connection tunneling. It is a process whereby a TCP/IP conection
+    that would be insecure is tunneled through a secure SSH link, protecting from network 
+    attacks. 
+    Used to form Virtual Private Network.
 ____________________________________________________________________________________________
+18. What is the difference between local and remote port forwarding?
+A:  Local Port Forwarding(Outgoing Tunnel)
+    Local host forwards /displays content of remote host.
+    Local host acts as a proxy.
+
+    Remote Port Forwarding(Incomming Tunnel) 
+    Remote host forwards /displays content of local host
+    Remote host acts as a proxy.
 ____________________________________________________________________________________________
+19. What are the steps to add a user to a system without using useradd/adduser?
+A:  Edit /etc/passwd file.
+    Edit with vipw because vipw locks the file and other commands won't try to update it.
+    Edit vipw -s ---> To edit shadow file.
+    Edit vigr ---> To add user group
+    Create home directory.
+    Copy the content of /etc/skel directory to new user home directory.
+    Change the group and directory ownership(Using chmod and chown)
 ____________________________________________________________________________________________
+20. What is MAJOR and MINOR numbers of special files?
+A:  Kernel will read the devices using MAJOR and MINOR number.
+    #ls -l /dev/*
+    #cat /etc/devices ---> To get MAJOR number of devices
 ____________________________________________________________________________________________
+21. Describe the mknod command and when you'd use it.
+A:  
 ____________________________________________________________________________________________
 ____________________________________________________________________________________________
 ____________________________________________________________________________________________
