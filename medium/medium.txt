@@ -190,24 +190,66 @@ A:  Edit /etc/passwd file.
 ____________________________________________________________________________________________
 20. What is MAJOR and MINOR numbers of special files?
 A:  Kernel will read the devices using MAJOR and MINOR number.
+    MAJOR number will idebtify the driver associated with device.
+    MINOR number is used by KERNEL to determine exactly which device is being reffered to.
+    
     #ls -l /dev/*
     #cat /etc/devices ---> To get MAJOR number of devices
 ____________________________________________________________________________________________
 21. Describe the mknod command and when you'd use it.
-A:  
+A:  #mknode ---> Was originally used to create the character and block devices that
+    populate /dev/.
+    Nowadays udev will automatically creates and removes the virtual FS when new hardware
+    is detected.
+____________________________________________________________________________________________
+22. Describe a scenario when you get a "filesystem is full" error,
+    but 'df' shows there is free space.
+A:  If space available then, we ned to check inode consumption of filesystem.
+    Here it means Filesystem inode is full.
+    #df -iTh ---> To check inode usage.
+____________________________________________________________________________________________
+23. Describe a scenario when deleting a file, but 'df' not showing the space being freed.
+A:  Even after deleting space is not being freed means files are held open and take space
+    after they are deleted.
+    #lsof ---> To find the list of open files
+    #lsof | grep "deleted" ---> To get the files which are deleted but still consuming 
+                                space.
+    Get the PID of the files and kill it to free up space.
+____________________________________________________________________________________________
+24. Describe how 'ps' works.
+A:  ps works by reading files in the proc FS.
+    The directory contains various files that provide information about PIDs.
+____________________________________________________________________________________________
+25. What happens to a child process that dies and has no parent process to wait for it 
+    and what’s bad about this?
+A:  Child process then becomes defunct or zombie process. They only occupies space in the 
+    process table, but excessive zombies can fill it, meaning no other processes can be
+    launch.
+____________________________________________________________________________________________
+26. Explain briefly each one of the process states.
+A:  START
+    A process is started.
+    READY
+    Waiting for the allocation so that they can run.
+    RUNNING
+    Once process is assigned to processor by OS scheduler, it starts executing its
+    instruction.
+    WAITING
+    Process is waiting for user input or for a file to become available.
+    TERMINATED or EXIT
+    When a process finishes its execution or terminated by OS then it moves to the
+    terminated state where it waits to be removed from main memory.
+____________________________________________________________________________________________
+27. How to know which process listens on a specific port?
+A:  #sudo netstat -tunlp | grep LISTEN | grep ssh
 ____________________________________________________________________________________________
 ____________________________________________________________________________________________
 ____________________________________________________________________________________________
 ____________________________________________________________________________________________
 ____________________________________________________________________________________________
-
-
-
-
-
-
-
-
-
+____________________________________________________________________________________________
+____________________________________________________________________________________________
+____________________________________________________________________________________________
+____________________________________________________________________________________________
 ____________________________________________________________________________________________
 ********************************************************************************************
