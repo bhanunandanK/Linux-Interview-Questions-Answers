@@ -241,7 +241,92 @@ A:  START
     terminated state where it waits to be removed from main memory.
 ____________________________________________________________________________________________
 27. How to know which process listens on a specific port?
-A:  #sudo netstat -tunlp | grep LISTEN | grep ssh
+A:  #sudo netstat -tunlp | grep <port number>
+    #sudo netstat -tunlp | grep LISTEN | grep ssh
+    #lsof -i :port#
+____________________________________________________________________________________________
+28. What is a zombie process and what could be the cause of it?
+A:  Zombie process is the process that have finished its execution but it still holds entry
+    in process table.
+    Zombie processes are also known as defunct process.
+    #ps -ef | grep defunct
+____________________________________________________________________________________________
+29. You run a bash script and you want to see its output on your terminal and save it to a
+    file at the same time. How could you do it?
+A:  Using tee command.
+    #bash script.sh | tee -a output.txt
+____________________________________________________________________________________________
+30. Explain what echo "1" > /proc/sys/net/ipv4/ip_forward does.
+A:  Enables IP forwarding but will not reserve the states after reboot.
+____________________________________________________________________________________________
+31. Describe briefly the steps you need to take in order to create and install a valid
+    certificate for the site https://foo.example.com.
+A:  Make a CSR(Certificate Signing Request) on your web server.
+    Purchase a certificate.
+    Install your SSL certificates and intermidiate certificates on your server.
+____________________________________________________________________________________________
+32. Can you have several HTTPS virtual hosts sharing the same IP?
+A:  Yes. If server supports SNI(Server Name Indication)
+    SNI allows the server to safely host multiple TLS certificates for multiple sites, all
+    under a single IP address.
+____________________________________________________________________________________________
+33. What is a wildcard certificate?
+A:  Certificate which can be used with multiple subdomains of a domain.
+____________________________________________________________________________________________
+34. Which Linux file types do you know?
+A:  Regular File
+    Directory
+    Special Files
+      - Block file(b)
+      - Character file(c)
+      - Pipe file(p)
+      - Symbolic link file(l)
+      - Socket file(s)
+____________________________________________________________________________________________
+35. What is the difference between a process and a thread?
+    And parent and child processes after a fork system call?
+A:  PROCESS
+    Process is the instance of the running program.
+    Process can create another process and are ran in mmemory.
+    Process is heavy weight.
+
+    THREAD
+    Thread is the segment of process.
+    Process can have multiple threads.
+    They run in shared memory.
+    Thread is light weight.
+____________________________________________________________________________________________
+36. What is the difference between exec and fork?
+A:  exec
+    It will replace the entire current process with a new program.
+    fork
+    It creates duplicate of the current process.
+____________________________________________________________________________________________
+37. What is "nohup" used for?
+A:  It will make your process running even after exiting from a shell.
+____________________________________________________________________________________________
+38. What is the difference between these two commands?
+	myvar=hello
+	export myvar=hello
+A:  myvar=hello ---> Will assign value(hello) to myvar
+    export myvar=hello ---> Will make myvar as envirnoment variable and it will be active
+			    untill you logout from current session.
+____________________________________________________________________________________________
+39. How many NTP servers would you configure in your local ntp.conf?
+A:  
+____________________________________________________________________________________________
+40. What does the column 'reach' mean in ntpq -p output?
+____________________________________________________________________________________________
+41. You need to upgrade kernel at 100-1000 servers, how you would do this?
+____________________________________________________________________________________________
+42. How can you get Host, Channel, ID, LUN of SCSI disk?
+____________________________________________________________________________________________
+43. How can you limit process memory usage?
+____________________________________________________________________________________________
+44. What is bash quick substitution/caret replace(^x^y)?
+____________________________________________________________________________________________
+45. Do you know of any alternative shells? If so, have you used any?
+
 ____________________________________________________________________________________________
 ____________________________________________________________________________________________
 ____________________________________________________________________________________________
@@ -250,6 +335,6 @@ ________________________________________________________________________________
 ____________________________________________________________________________________________
 ____________________________________________________________________________________________
 ____________________________________________________________________________________________
-____________________________________________________________________________________________
-____________________________________________________________________________________________
+
+
 ********************************************************************************************
