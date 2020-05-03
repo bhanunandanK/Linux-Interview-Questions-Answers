@@ -313,28 +313,58 @@ A:  myvar=hello ---> Will assign value(hello) to myvar
 			    untill you logout from current session.
 ____________________________________________________________________________________________
 39. How many NTP servers would you configure in your local ntp.conf?
-A:  
+A:  2 Servers. 
 ____________________________________________________________________________________________
 40. What does the column 'reach' mean in ntpq -p output?
+A:  If the reach value is non zero, the server is reacheable; otherwise, unreacheable.
 ____________________________________________________________________________________________
 41. You need to upgrade kernel at 100-1000 servers, how you would do this?
+A:  I will use ansible.
+    Prior doing we need to test.
+    Using serial argument in ansible we can upgrage servers in slots.
 ____________________________________________________________________________________________
 42. How can you get Host, Channel, ID, LUN of SCSI disk?
+A:  #cat /proc/scsi/scsi
 ____________________________________________________________________________________________
 43. How can you limit process memory usage?
+A:  We can edit the below file:
+    #/etc/security/limits.conf
+    OR
+    #ulimt -a ----> To list all
 ____________________________________________________________________________________________
 44. What is bash quick substitution/caret replace(^x^y)?
+A:  #sed -e 's/^x/^y/g'
 ____________________________________________________________________________________________
 45. Do you know of any alternative shells? If so, have you used any?
-
+A:  zsh. It is bash compatible.
 ____________________________________________________________________________________________
+46. What is a tarpipe (or, how would you go about copying everything, including hardlinks
+    and special files, from one server to another)?
+A:  tarpipe - copy a directory to a server from another preserving permissions and files.
 ____________________________________________________________________________________________
+47. How can you tell if the httpd package was already installed?
+A:  # rpm -qa | grep http
+    httpd-2.4.6-93.el7.x86_64
+    httpd-tools-2.4.6-93.el7.x86_64
+    # httpd -v
+    Server version: Apache/2.4.6 (Red Hat Enterprise Linux)
+    Server built:   Oct  8 2019 05:47:38
 ____________________________________________________________________________________________
+48. How can you list the contents of a package?
+A:  #rpm -qc httpd-2.4.6-93.el7.x86_64
+    #rpm -qf httpd-2.4.6-93.el7.x86_64
 ____________________________________________________________________________________________
+49. How can you determine which package is better: openssh-server-5.3p1-118.1.el6_8.x86_64
+    or openssh-server-6.6p1-1.el6.x86_64 ?
+A:  The package with the higher version indeed will be a better as it will have bug fix and 
+    other enhancements.
 ____________________________________________________________________________________________
+50. Can you explain to me the difference between block based, and object based storage?
+A:  object storage
+    Best for big content and high stream throughput.
+    Data is stored as discrete units called objects.
+    block storage
+    High performance with database and tracsactional data.
+    Data is stored in blocks.
 ____________________________________________________________________________________________
-____________________________________________________________________________________________
-____________________________________________________________________________________________
-
-
 ********************************************************************************************
